@@ -11,12 +11,12 @@
         <!-- NAVBAR -->
         <nav class="navbar">
             <div class="navbarmenu">
-                <a class="visionFlan">VISION-FLAN</a>
+                <a class="visionFlan">InterleavedEval</a>
             </div>
         </nav>
         
         <div class="major_section">
-            <h1>Vision-Flan: Scaling Visual Instruction Tuning</h1>
+            <h1>InterleavedEval: Scaling Visual Instruction Tuning</h1>
             <p>Created by Virginia Tech's NLP Lab. Sep 21, 2023</p>
             <hr>
             <br>
@@ -36,12 +36,12 @@
                 </div>
             </center>
             <br>
-            <p class="dataset_description"> We introduce Vision-Flan, the largest human-annotated 
+            <p class="dataset_description"> We introduce InterleavedEval, the largest human-annotated 
                 visual instruction tuning dataset that consists of <b> 200+ </b> diverse vision-language 
                 tasks derived from <b> 101 </b> open-source computer vision datasets. Each task is equipped with an expert 
                 written instruction and carefully designed templates for the inputs and outputs. The dataset encompasses 
                 a wide range of tasks such as image captioning, visual question-answering, and 
-                visual understanding. Vision-Flan is built to support various researches and applications in vision-language models, pushing the boundaries of understanding and interaction between these two modalities. Researchers and practitioners can leverage this dataset to advance the state of the art vision-language models
+                visual understanding. InterleavedEval is built to support various researches and applications in vision-language models, pushing the boundaries of understanding and interaction between these two modalities. Researchers and practitioners can leverage this dataset to advance the state of the art vision-language models
                 and develop innovative algorithms in a wide range of domains. We showcase an instance for each task on this <a href="./tasks.html">page</a>.
             </p>
         </div><br><br><br><br>
@@ -83,12 +83,12 @@
                     <th>Sample Size</th>
                 </tr>
                 <tr>
-                    <td><a href="https://huggingface.co/datasets/Vision-Flan/vision-flan_191-task_1k">annotation_191-task_1k.json</a></td>
+                    <td><a href="https://huggingface.co/datasets/InterleavedEval/InterleavedEval_191-task_1k">annotation_191-task_1k.json</a></td>
                     <td>108M</td>
                     <td>186k</td>
                 </tr>
                 <tr>
-                    <td><a href="https://huggingface.co/datasets/Vision-Flan/vision-flan_191-task_1k/tree/main">image_191-task_1k.zip</a></td>
+                    <td><a href="https://huggingface.co/datasets/InterleavedEval/InterleavedEval_191-task_1k/tree/main">image_191-task_1k.zip</a></td>
                     <td>37GB</td>
                     <td>186k</td>
                 </tr>
@@ -98,7 +98,7 @@
                     <td>300k</td>
                 </tr> -->
             </table><br><br>
-            <p class="dataset_description">We provide the download links to the annotations and images above. In the annotations file, we merged instructions and templates with original tasks' inputs and outputs. To train a model on Vision-Flan, you can simply download the annotations and images. The annotations file consists of 191 tasks and for each task we randomly sampled 1K instances which should be sufficient for the purpose of instruction tuning. By now we can not release all tasks since some datasets are not allowed to be distributed.
+            <p class="dataset_description">We provide the download links to the annotations and images above. In the annotations file, we merged instructions and templates with original tasks' inputs and outputs. To train a model on InterleavedEval, you can simply download the annotations and images. The annotations file consists of 191 tasks and for each task we randomly sampled 1K instances which should be sufficient for the purpose of instruction tuning. By now we can not release all tasks since some datasets are not allowed to be distributed.
             </p>
         </div>
         
@@ -112,30 +112,30 @@
                     <th>Turning Strategy</th>
                 </tr>
                 <tr>
-                    <td><a href="https://huggingface.co/Vision-Flan/vision-flan_llava">vision-flan_llava</a></td>
+                    <td><a href="https://huggingface.co/InterleavedEval/InterleavedEval_llava">InterleavedEval_llava</a></td>
                     <td>Vicuna_v1.3_7B</td>
                     <td>Projection layer, Lora</td>
                 </tr>
                 <tr>
-                    <td><a href="https://huggingface.co/Vision-Flan/vision-flan_blip2_xl">vision-flan_blip2_xl</a></td>
+                    <td><a href="https://huggingface.co/InterleavedEval/InterleavedEval_blip2_xl">InterleavedEval_blip2_xl</a></td>
                     <td>Flan_T5_xl</td>
                     <td>Qformer</td>
                 </tr>
                 <tr>
-                    <td><a href="https://huggingface.co/Vision-Flan/vision-flan_blip2_xxl">vision-flan_blip2_xxl</a></td>
+                    <td><a href="https://huggingface.co/InterleavedEval/InterleavedEval_blip2_xxl">InterleavedEval_blip2_xxl</a></td>
                     <td>Flan_T5_xxl</td>
                     <td>Qformer</td>
                 </tr>
             </table><br><br>
-            <p class="dataset_description">To demonstrate the power of Vision-Flan, we train three vision-language models on 205 tasks in Vision-Flan and use 1K randomly sampled for each task. We finetune the pretrained LLaVa-Vicuna_v1.3_7B for 1 epoch on the mixture of Vision-Flan and LLaVa datasets and name the model vision-flan_llava. We finetune BLIP-2 with Flan_T5_xl as the language model for 1 epochs on Vision-Flan dataset and name the model vision-flan_blip2_xl. 
-            We finetune BLIP-2 with Flan_T5_xxl as the language model for 1 epoch on Vision-Flan dataset and name the model vision-flan_blip2_xxl. We provide Huggingface links to the models above.
+            <p class="dataset_description">To demonstrate the power of InterleavedEval, we train three vision-language models on 205 tasks in InterleavedEval and use 1K randomly sampled for each task. We finetune the pretrained LLaVa-Vicuna_v1.3_7B for 1 epoch on the mixture of InterleavedEval and LLaVa datasets and name the model InterleavedEval_llava. We finetune BLIP-2 with Flan_T5_xl as the language model for 1 epochs on InterleavedEval dataset and name the model InterleavedEval_blip2_xl. 
+            We finetune BLIP-2 with Flan_T5_xxl as the language model for 1 epoch on InterleavedEval dataset and name the model InterleavedEval_blip2_xxl. We provide Huggingface links to the models above.
             </p>
         </div>
         
         <!-- <div class="section_title">
             <h2>Model performance<hr></h2>
             <center><img src="./plot/performance.png" style="width: 700px;"></center>
-            <p class="dataset_description">To compare the performance of vision-langugae models trained on human labeled datasets and the GPT-4 generated dataset, we train a LLaVa model on the MultiInstruct dataset which was previously the largest human-labled visual-instruct-tuning dataset consisting of 62 diverse tasks. We also train a LLaVa model on our proposed Vision-Flan dataset. We evaluate the zero-shot perform of multiinstruct_llava. vision-flan_llava and the official llava model on three tasks: scienceQA, scienceQA explanation, and VISIT. As one can observe that vision-flan_llava significantly outperform multiinstruct_llava on all three tasks. However, we can still observe the performance gap between vision-langugae model trained GPT-4 geenrated data and human-labeled data. (We use GPT-4 for evaluating the performance. For SciecneQA we ask GPT-4 if the reference is the same as the prediction. For scienceQA explanation and VISIT, we ask GPT-4 to assign a score between 0-5 for a prediction, given the target and the input prompt. We normalize the scores from 0-5 to 0-100.)
+            <p class="dataset_description">To compare the performance of vision-langugae models trained on human labeled datasets and the GPT-4 generated dataset, we train a LLaVa model on the MultiInstruct dataset which was previously the largest human-labled visual-instruct-tuning dataset consisting of 62 diverse tasks. We also train a LLaVa model on our proposed InterleavedEval dataset. We evaluate the zero-shot perform of multiinstruct_llava. InterleavedEval_llava and the official llava model on three tasks: scienceQA, scienceQA explanation, and VISIT. As one can observe that InterleavedEval_llava significantly outperform multiinstruct_llava on all three tasks. However, we can still observe the performance gap between vision-langugae model trained GPT-4 geenrated data and human-labeled data. (We use GPT-4 for evaluating the performance. For SciecneQA we ask GPT-4 if the reference is the same as the prediction. For scienceQA explanation and VISIT, we ask GPT-4 to assign a score between 0-5 for a prediction, given the target and the input prompt. We normalize the scores from 0-5 to 0-100.)
             </p>
         </div> -->
         
@@ -143,11 +143,11 @@
         <br><br><br><br>
         <div class="section_title">
             <h1>Citation<hr></h1>
-            <p class="dataset_description">If you use Vision-Flan in your research, please cite the following papers.</p>
+            <p class="dataset_description">If you use InterleavedEval in your research, please cite the following papers.</p>
             <center><div class="bibtex">
                 <pre><code>
     @article{xu2024vision,
-        title={Vision-Flan: Scaling Human-Labeled Tasks in Visual Instruction Tuning},
+        title={InterleavedEval: Scaling Human-Labeled Tasks in Visual Instruction Tuning},
         author={Xu, Zhiyang and Feng, Chao and Shao, Rulin and Ashby, Trevor and Shen, Ying and Jin, Di and Cheng, Yu and Wang, Qifan and Huang, Lifu},
         journal={arXiv preprint arXiv:2402.11690},
         year={2024}
@@ -175,15 +175,15 @@
         <br><br><br><br>
         <div class="section_title" id="acknowledgement">
             <h1>Acknowledgement<hr></h1>
-            <p class="dataset_description"><span style="color:red;">Vision-Flan dataset is for research purpose only. 
-                Please carefully check the licenses of the original datasets before using Vision-Flan.</span> 
+            <p class="dataset_description"><span style="color:red;">InterleavedEval dataset is for research purpose only. 
+                Please carefully check the licenses of the original datasets before using InterleavedEval.</span> 
                 We provide the URLs to the original datasets and their Bibtex on this <a href="./bibtex.html">page</a>.
                 The images and tasks may be taken down at any time when requested by the original 
                 dataset owners or owners of the referenced images. If you hope to take 
                 down any tasks or the images, please contact Zhiyang Xu and Lifu Huang at <span class="email_text">zhiyangx@vt.edu</span> and <span class="email_text">lifuh@cs.vt.edu</span>.
             </p>
             <h3>Annotators<hr></h3>
-            <p class="dataset_description">We want to thank Shivansh Mathur, Ujjwal Maheshwari, Jiayue Lin, Alok Mehandale, Fatemeh Sarshartehrani, Nila Masrourisaadat, and Manasa Reddy Kandula for the work that they contributed to annotating Vision-Flan.</p>
+            <p class="dataset_description">We want to thank Shivansh Mathur, Ujjwal Maheshwari, Jiayue Lin, Alok Mehandale, Fatemeh Sarshartehrani, Nila Masrourisaadat, and Manasa Reddy Kandula for the work that they contributed to annotating InterleavedEval.</p>
         </div>
 	</body>
 </html>
