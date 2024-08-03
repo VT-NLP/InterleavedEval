@@ -29,6 +29,18 @@ body {
     /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
 }
 
+#figure1 {
+    width: 100%;
+}
+
+#figure2 {
+    width: 70%;
+}
+
+#figure4 {
+    width: 70%;
+}
+
 .email_text {
     text-decoration: underline;
     color: royalblue ;

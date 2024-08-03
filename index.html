@@ -27,6 +27,7 @@
             <br>
             <center>
                 <div>
+                    <a href="https://github.com/VT-NLP/InterleavedEval/tree/main"><button><i class="fa fa-github"></i> Code</button></a>
                     <a href="https://arxiv.org/pdf/2406.14643v1"><button><i class="fa fa-newspaper-o"></i> Paper</button></a>
 <!--                     <a href="./tasks.html"><button><i class="fa fa-book"></i> Tasks</button></a> -->
 <!--                     <a href="#data_samples"><button><i class="fa fa-picture-o"></i> Samples</button></a> -->
@@ -35,10 +36,149 @@
                     <a href="#acknowledgement"><button><i class="fa fa-arrow-circle-o-right"></i> Acknowledgement</button></a>
                 </div>
             </center>
+            <img src="./images/figure1.png" id="figure1">
             <br>
             <p class="dataset_description"> Interleaved text-and-image generation has been an intriguing research direction, where the models are required to generate both images and text pieces in an arbitrary order. Despite the emerging advancements in interleaved generation, the progress in its evaluation still significantly lags behind. Existing evaluation benchmarks do not support arbitrarily interleaved images and text for both inputs and outputs, and they only cover a limited number of domains and use cases. Also, current works predominantly use similarity-based metrics which fall short in assessing the quality in open-ended scenarios. To this end, we introduce InterleavedBench, the first benchmark carefully curated for the evaluation of interleaved text-and-image generation. InterleavedBench features a rich array of tasks to cover diverse real-world use cases. In addition, we present InterleavedEval, a strong reference-free metric powered by GPT-4o to deliver accurate and explainable evaluation. We carefully define five essential evaluation aspects for InterleavedEval, including text quality, perceptual quality, image coherence, text-image coherence, and helpfulness, to ensure a comprehensive and fine-grained assessment. Through extensive experiments and rigorous human evaluation, we show that our benchmark and metric can effectively evaluate the existing models with a strong correlation with human judgments surpassing previous reference-based metrics. We also provide substantial findings and insights to foster future research in interleaved generation and its evaluation.
             </p>
         </div><br><br><br><br>
+
+        <div class="section_title">
+            <h1>InterleavedBench<hr></h1>
+            <center><img src="./images/figure2.png" id="figure2"></center>
+            <p class="dataset_description">We introduce INTERLEAVEDBENCH, the first comprehensive benchmark meticulously constructed
+                to evaluate text-and-image interleaved generation.</p>
+            <p class="dataset_description">Our dataset includes <b>two subsets</b>:</p> 
+                <ul>
+                    <li><p><b>context-based</b>:
+                        subset where the instances contain a multimodal
+                        context of interleaved text and images in the input (first row in above figure)</p></li>
+                    <li><p><b>context-free</b>:
+                        subset with text-only inputs (second row in above figure). The context-free subset can assess whether
+                        the model can creatively generate interleaved content based on the text-only instruction, while the
+                        context-based subset can better benchmark the coherence and consistency of generated outputs.</p>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="section_title">
+            <h1>Comparison with Existing Benchmarks<hr></h1>
+            <table>
+                <tr>
+                  <th>Dataset Name</th>
+                  <th>Detailed Instruction</th>
+                  <th>Image Input</th>
+                  <th>Text Output</th>
+                  <th>Image Output</th>
+                </tr>
+                <tr>
+                  <td>MagicBrush</td>
+                  <td>No</td>
+                  <td>Single</td>
+                  <td>No</td>
+                  <td>Single</td>
+                </tr>
+                <tr>
+                    <td>DreamBench</td>
+                    <td>No</td>
+                    <td>Multiple</td>
+                    <td>No</td>
+                    <td>Single</td>
+                </tr>
+                <tr>
+                  <td>CustomDiffusion</td>
+                  <td>No</td>
+                  <td>Multiple</td>
+                  <td>No</td>
+                  <td>Single</td>
+                </tr>
+                <tr>
+                    <td>DreamEditBench</td>
+                    <td>No</td>
+                    <td>Multiple</td>
+                    <td>No</td>
+                    <td>Single</td>
+                  </tr>
+                  <tr>
+                    <td>Mantis-Eval</td>
+                    <td>Yes</td>
+                    <td>Multiple</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                  </tr>
+                  <tr>
+                    <td>InterleavedBench (Ours)</td>
+                    <td>Yes</td>
+                    <td>Multiple</td>
+                    <td>Yes</td>
+                    <td>Multiple</td>
+                  </tr>
+              </table>
+
+              <p class="dataset_description">
+                We highlight the following key differences and
+                unique challenges introduced by our INTERLEAVEDBENCH compared with the existing benchmark. 
+                <b>(1): Output modality</b>: our benchmark requires the models to generate interleaved text and
+                multiple images that could present in an arbitrary
+                order, whereas exiting benchmarks (Kumari et al.,
+                2023b) only cover the output with single modality or a single image; <b>(2)
+                Requirement on coherence</b>: given that both inputs and outputs in our benchmark can contain
+                multiple pieces of text and images, our dataset
+                can assess whether the outputs are coherent and
+                consistent with input instruction and context, and within the outputs themselves; 
+                <b>(3) Instruction following</b>: Most existing conditional image generation datasets only contain simple instructions such
+                as <i>“add a cat next to the person”</i>. On the contrary,
+                each instance in our benchmark contains a detailed
+                human-annotated instruction to describe the task.
+                Thus, our dataset can evaluate models' instructionfollowing and generalization capabilities. We show
+                the difference between our benchmark and existing
+                datasets in the above table.
+              </p>
+        </div>
+
+        <div class="section_title">
+            <h1>Main Results<hr></h1>
+            <table>
+                <tr>
+                  <th>Company</th>
+                  <th>Contact</th>
+                  <th>Country</th>
+                </tr>
+                <tr>
+                  <td>Alfreds Futterkiste</td>
+                  <td>Maria Anders</td>
+                  <td>Germany</td>
+                </tr>
+                <tr>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                </tr>
+              </table>
+              <br><br>
+              <table>
+                <tr>
+                  <th>Company</th>
+                  <th>Contact</th>
+                  <th>Country</th>
+                </tr>
+                <tr>
+                  <td>Alfreds Futterkiste</td>
+                  <td>Maria Anders</td>
+                  <td>Germany</td>
+                </tr>
+                <tr>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                </tr>
+              </table>
+        </div>
+
+        <div class="section_title">
+            <h1>Qualitative Analysis<hr></h1>
+            <center><img src="./images/figure4.png" id="figure4"></center>
+        </div>
 
 <!--         <div class="section_title" id="data_samples">
             <h1>Data Samples<hr></h1>
