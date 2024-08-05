@@ -37,8 +37,22 @@ body {
     width: 70%;
 }
 
-#figure4 {
+#figure3 {
     width: 70%;
+    margin: auto;
+}
+
+#figure4 {
+    width: 100%;
+}
+
+#figure5 {
+    width: 100%;
+}
+
+#side-by-side {
+    display: grid;
+    grid-template-columns: 60% 40%;
 }
 
 .email_text {
