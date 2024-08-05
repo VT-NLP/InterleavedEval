@@ -55,6 +55,38 @@ body {
     margin: auto;
 }
 
+.tag_holder {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 30%;
+    margin: auto;
+}
+
+.model_text {
+    font-weight: bold;
+}
+
+#best {
+    background-color: rgba(1, 235, 1, 0.11);
+    width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#middle {
+    background-color: rgba(231, 235, 1, 0.11);
+    width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#worst {
+    background-color: rgba(235, 9, 1, 0.11);
+    width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .dataset_description {
     width: 100%;
     font-size: 22px;

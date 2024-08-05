@@ -51,9 +51,9 @@
                 <ul>
                     <li><p><b>context-based</b>:
                         subset where the instances contain a multimodal
-                        context of interleaved text and images in the input (first row in above figure)</p></li>
+                        context of interleaved text and images in the input (<b><i>first row in above figure</i></b>)</p></li>
                     <li><p><b>context-free</b>:
-                        subset with text-only inputs (second row in above figure). The context-free subset can assess whether
+                        subset with text-only inputs (<b><i>second row in above figure</i></b>). The context-free subset can assess whether
                         the model can creatively generate interleaved content based on the text-only instruction, while the
                         context-based subset can better benchmark the coherence and consistency of generated outputs.</p>
                     </li>
@@ -117,60 +117,189 @@
 
               <p class="dataset_description">
                 We highlight the following key differences and
-                unique challenges introduced by our INTERLEAVEDBENCH compared with the existing benchmark. 
-                <b>(1): Output modality</b>: our benchmark requires the models to generate interleaved text and
-                multiple images that could present in an arbitrary
-                order, whereas exiting benchmarks (Kumari et al.,
-                2023b) only cover the output with single modality or a single image; <b>(2)
-                Requirement on coherence</b>: given that both inputs and outputs in our benchmark can contain
-                multiple pieces of text and images, our dataset
-                can assess whether the outputs are coherent and
-                consistent with input instruction and context, and within the outputs themselves; 
-                <b>(3) Instruction following</b>: Most existing conditional image generation datasets only contain simple instructions such
-                as <i>“add a cat next to the person”</i>. On the contrary,
-                each instance in our benchmark contains a detailed
-                human-annotated instruction to describe the task.
-                Thus, our dataset can evaluate models' instructionfollowing and generalization capabilities. We show
-                the difference between our benchmark and existing
-                datasets in the above table.
+                unique challenges introduced by our INTERLEAVEDBENCH compared with the existing benchmark:
+                
+                <ul>
+                    <li><p><b>(1): Output modality</b>: our benchmark requires the models to generate interleaved text and
+                        multiple images that could present in an arbitrary
+                        order, whereas exiting benchmarks only cover the output with single modality or a single image;</p></li>
+                    <li><p><b>(2)
+                        Requirement on coherence</b>: given that both inputs and outputs in our benchmark can contain
+                        multiple pieces of text and images, our dataset
+                        can assess whether the outputs are coherent and
+                        consistent with input instruction and context, and within the outputs themselves;</p></li>
+                    <li><p><b>(3) Instruction following</b>: Each instance in our benchmark contains a detailed
+                        human-annotated instruction to describe the task.
+                        Thus, our dataset can evaluate models' instructionfollowing and generalization capabilities. We show
+                        the difference between our benchmark and existing
+                        datasets in the above table.</p></li>
+                </ul>
               </p>
         </div>
 
         <div class="section_title">
             <h1>Main Results<hr></h1>
+
+            <h3>Baselines</h3><hr>
+            <p class="dataset_description">
+                <ul>
+                    <li><p><b>(1) MiniGPT-5 (Zheng et al., 2023a)</b> which connects a large language model with a stable diffusion
+                        model via generative vokens, enabling descriptionfree multimodal generation.</p></li>
+                    <li><p><b>(2) GILL (Koh et al.,
+                        2023)</b> which allows a pretrained large language
+                        model to generate multimodal responses by mapping the hidden states of text into the embedding
+                        space of an image generation model.</p></li>
+                    <li><p><b>(3) EMU-2 (Sun et al., 2023a)</b> which induces in-context
+                        learning capabilities of LLMs by scaling up the
+                        model size and the size of the pretraining dataset;
+                    </p></li>
+                    <li><p><b>(4) EMU-2 Gen + Gold Text</b> where EMU-2 Gen
+                        is a pretrained EMU-2 model instruction-tuned on
+                        various controllable image generation tasks. However, EMU-2 Gen cannot generate 
+                        text so we combine it with ground-truth textual responses to come
+                        up with a complete text-and-image interleaved content for evaluation.</p></li>
+                    <li><p><b>(5) GPT-4o (OpenAI, 2024) + DALL·E 3 (Betker
+                        et al.)</b> where GPT-4o is the state-of-the-art proprietary 
+                        LMM that can comprehend interleaved textand-image inputs and generate text-only responses.
+                        We leverage GPT-4o to generate text responses as
+                        well as captions for image responses in the desired
+                        positions. Then the captions are fed into DALL·E
+                        3 to generate images. Finally, we combine the
+                        text responses with generated images in their original orders.</p></li>
+                    <li><p><b>(6) Gemini-1.5 (Anil et al., 2023) +
+                        SDXL (Podell et al., 2023)</b>: we build this baseline
+                        in a similar way as GPT-4o + DALL·E 3 but use
+                        Gemini-1.5 Pro as the LMM and Stable Diffusion
+                        XL Turbo as the image generation model.</p></li>
+                </ul>
+            </p>
+
+            <h3>Automatic Evaluation</h3><hr>
+            <i>Note: TIC means "Text-Image Coherence" and we use a scale of 0-5 for this evaluation.</i>
+            <div class="tag_holder">
+                <p id="best">Best</p>
+                <p id="middle">Middle</p>
+                <p id="worst">Worst</p>
+            </div>
             <table>
                 <tr>
-                  <th>Company</th>
-                  <th>Contact</th>
-                  <th>Country</th>
+                  <th>Model</th>
+                  <th>Text Quality</th>
+                  <th>Perceptual Quality</th>
+                  <th>Image Coherence</th>
+                  <th>TIC</th>
+                  <th>Helpfulness</th>
+                  <th>AVG</th>
                 </tr>
                 <tr>
-                  <td>Alfreds Futterkiste</td>
-                  <td>Maria Anders</td>
-                  <td>Germany</td>
+                  <td class="model_text">MiniGPT-5</td>
+                  <td>1.22</td>
+                  <td>2.45</td>
+                  <td>1.62</td>
+                  <td>2.03</td>
+                  <td>1.77</td>
+                  <td>1.82</td>
                 </tr>
                 <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
+                    <td class="model_text">GILL</td>
+                    <td>0.75</td>
+                    <td>3.21</td>
+                    <td>2.25</td>
+                    <td>1.53</td>
+                    <td>1.48</td>
+                    <td>1.84</td>
+                </tr>
+                <tr>
+                    <td class="model_text">EMU-2</td>
+                    <td>1.26</td>
+                    <td>2.28</td>
+                    <td>1.89</td>
+                    <td>1.34</td>
+                    <td>1.64</td>
+                    <td>1.68</td>
+                </tr>
+                <tr>
+                    <td class="model_text">EMU-2 (Gold Text)</td>
+                    <td>1.56</td>
+                    <td>3.35</td>
+                    <td>2.89</td>
+                    <td>1.43</td>
+                    <td>2.10</td>
+                    <td>2.27</td>
+                </tr>
+                <tr style="background-color: rgba(231, 235, 1, 0.11);">
+                    <td class="model_text">Gemini1.5 + SDXL</td>
+                    <td><b>4.40</b></td>
+                    <td>3.99</td>
+                    <td><b>3.64</b></td>
+                    <td>4.13</td>
+                    <td>3.62</td>
+                    <td>3.96</td>
+                </tr>
+                <tr style="background-color: rgba(1, 235, 1, 0.11);">
+                    <td class="model_text">GPT-4o + DALLE3</td>
+                    <td>4.37</td>
+                    <td><b>4.36</b></td>
+                    <td>3.51</td>
+                    <td><b>4.55</b></td>
+                    <td><b>3.88</b></td>
+                    <td><b>4.13</b></td>
                 </tr>
               </table>
               <br><br>
+
+              <h3>Human Evaluation</h3><hr>
+              <i>Note: TIC means "Text-Image Coherence" and we use a scale of 0-3 for this evaluation.</i>
+              <div class="tag_holder">
+                <p id="best">Best</p>
+                <p id="middle">Middle</p>
+                <p id="worst">Worst</p>
+            </div>
               <table>
                 <tr>
-                  <th>Company</th>
-                  <th>Contact</th>
-                  <th>Country</th>
+                    <th>Model</th>
+                    <th>Text Quality</th>
+                    <th>Perceptual Quality</th>
+                    <th>Image Coherence</th>
+                    <th>TIC</th>
+                    <th>Helpfulness</th>
+                    <th>AVG</th>
                 </tr>
                 <tr>
-                  <td>Alfreds Futterkiste</td>
-                  <td>Maria Anders</td>
-                  <td>Germany</td>
+                  <td class="model_text">GILL</td>
+                  <td>1.35</td>
+                  <td>1.89</td>
+                  <td>1.72</td>
+                  <td>1.43</td>
+                  <td>1.19</td>
+                  <td>1.52</td>
                 </tr>
                 <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
+                    <td class="model_text">EMU-2</td>
+                    <td>1.23</td>
+                    <td>1.74</td>
+                    <td>1.87</td>
+                    <td>1.24</td>
+                    <td>1.2</td>
+                    <td>1.46</td>
+                </tr>
+                <tr style="background-color: rgba(1, 235, 1, 0.11);">
+                    <td class="model_text">Gemini1.5 + SDXL</td>
+                    <td><b>2.59</b></td>
+                    <td>2.36</td>
+                    <td><b>2.13</b></td>
+                    <td><b>2.27</b></td>
+                    <td>2.08</td>
+                    <td>2.28</td>
+                </tr>
+                <tr style="background-color: rgba(1, 235, 1, 0.11);">
+                    <td class="model_text">GPT-4o + DALLE3</td>
+                    <td>2.49</td>
+                    <td><b>2.51</b></td>
+                    <td>2.02</td>
+                    <td>2.31</td>
+                    <td><b>2.13</b></td>
+                    <td><b>2.29</b></td>
                 </tr>
               </table>
         </div>
